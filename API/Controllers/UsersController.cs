@@ -5,9 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class UsersController(DataContext dataContext) : ControllerBase
+    public class UsersController(DataContext dataContext) : BaseApiController
     {
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AppUsers>>> GetUsers() { //=== It will returns all users.
