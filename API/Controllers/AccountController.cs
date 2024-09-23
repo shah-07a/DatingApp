@@ -2,6 +2,7 @@
 using API.DTOs;
 using API.Entities;
 using API.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using System.Text;
 
 namespace API.Controllers
 {
+    [AllowAnonymous]
     public class AccountController(DataContext dataContext, ITokenService tokenService) : BaseApiController
     {
         [HttpPost("register")] //account/register
@@ -31,7 +33,7 @@ namespace API.Controllers
                 Token = tokenService.CreateToken(user)
             };
         }
-
+        [HttpPost("Login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
             var user = await dataContext.Users.FirstOrDefaultAsync(x => x.UserName == loginDto.UserName.ToLower());

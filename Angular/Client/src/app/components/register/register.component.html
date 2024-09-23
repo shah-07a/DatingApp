@@ -1,0 +1,23 @@
+<form #registerForm (submit)="register()" autocomplete="off">
+    <div class="text-center text-primary">Sign up</div>
+    <div class="mb-3 form-floating">
+        <input type="text"  class="form-control" name="username" placeholder="User Name" [(ngModel)]="model.username" >
+<label for="username">User Name</label>
+    </div>
+    <!-- <div class="mb-3">
+        <label>Who is your favourite user?</label>
+        <select class="form-select">
+            @for (user of usersFromHomeComponet(); track $index) {
+                <option [value]="user.userName">{{user.userName}}</option>
+            }
+        </select>
+    </div> -->
+    <div class="mb-3 form-floating">
+        <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="model.password">
+        <label for="password">Password</label>
+    </div>
+    <div class="form-group text-center">
+        <button class="btn btn-success me-2" type="submit">Register</button>
+        <button class="btn btn-default me-2" type="button" (click)="cancel()">Cancel</button>
+    </div>
+</form>
