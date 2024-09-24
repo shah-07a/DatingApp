@@ -12,7 +12,7 @@ export class AccountService {
   currentUser = signal<User | null>(null); //Save loging info
   baseUrl = 'https://localhost:7093/api/';
 
-  Login(model:any)
+  login(model:any)
   {
     return this.http.post<User>(this.baseUrl + "account/login", model).pipe(
       map(user => {
@@ -39,7 +39,7 @@ export class AccountService {
       })
     );
   }
-  Logout(){
+  logout(){
     localStorage.removeItem('user');
     this.currentUser.set(null);
   }

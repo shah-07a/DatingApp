@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { AccountService } from '../../_services/account.service';
 import { response } from 'express';
 import { error } from 'console';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,8 @@ import { error } from 'console';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
-  accountService = inject(AccountService);
+  accountService = inject(AccountService);   //===Injecting account service
+  private toastr = inject(ToastrService)
   //=== It was previous approach @Input() usersFromHomeComponet: any;
   usersFromHomeComponet = input.required<any>();
   //=== It was previous approach  @Output() cancelRegister = new EventEmitter();
@@ -26,7 +28,7 @@ register()
       console.log(response),
       this.cancel()
     },
-    error: error => console.log(error)
+    error: error => this.toastr.error(error.error)
 })
 }
 cancel()
