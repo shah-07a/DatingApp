@@ -5,6 +5,9 @@ import { MemberDetailsComponent } from './components/members/member-details/memb
 import { ListComponent } from './components/list/list.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { authGuard } from './_guard/auth.guard';
+import { TestErrorsComponent } from './components/errors/test-errors/test-errors.component';
+import { NotFoundComponent } from './components/errors/not-found/not-found.component';
+import { ServerErrorComponent } from './components/errors/server-error/server-error.component';
 
 
 export const routes: Routes = [
@@ -22,6 +25,8 @@ export const routes: Routes = [
         ]
     },
   //=== apply auth gaurd to a route=== {path: 'members', component: MemberListComponent, canActivate: [authGuard]},
-    
+    {path: 'errors', component: TestErrorsComponent},
+    {path: 'not-found', component: NotFoundComponent},
+    {path: 'server-error', component: ServerErrorComponent},
     {path: '**', component: HomeComponent, pathMatch: 'full'}
 ];
