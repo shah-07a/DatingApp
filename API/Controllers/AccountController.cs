@@ -23,7 +23,11 @@ namespace API.Controllers
             {
                 UserName = registerDto.UserName,
                 PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
-                PassworSalt = hmac.Key
+                PassworSalt = hmac.Key,
+                KnownAs = registerDto.KnownAs,
+                City = registerDto.City,
+                Country = registerDto.Country,
+                Gender = registerDto.Gender
             };
             dataContext.Users.Add(user);
             await dataContext.SaveChangesAsync();
