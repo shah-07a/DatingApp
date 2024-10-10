@@ -11,14 +11,16 @@ import { EventEmitter } from 'stream';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 //===Injecting web api service end point ===
-  http = inject(HttpClient);
+//===  http = inject(HttpClient);
   registerMode = false;  
-  users : any;
+ users : any;
+  /*===
   ngOnInit(): void {
     this.getUsers();
   }
+    ===*/
   registerToggle()
   {
     this.registerMode = !this.registerMode
@@ -28,6 +30,7 @@ export class HomeComponent implements OnInit {
   {
     this.registerMode = event;
   }
+  /*===
   getUsers()
   {
     this.http.get("https://localhost:7093/API/Users").subscribe({
@@ -36,4 +39,5 @@ export class HomeComponent implements OnInit {
       complete: () => console.log("Current request has completed.")
     });
   }
+    ===*/
 }

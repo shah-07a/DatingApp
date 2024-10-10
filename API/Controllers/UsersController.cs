@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    //===[Authorize]
+        [Authorize]
     //===public class UsersController(IUserRepository userRepository, IMapper mapper) : BaseApiController
     //==={
         public class UsersController(IUserRepository userRepository) : BaseApiController
@@ -37,9 +37,9 @@ namespace API.Controllers
 
         }
         [HttpGet("{username}")]
-        public async Task<ActionResult<AppUsers>> GetUserByName(string username)
+        public async Task<ActionResult<MemberDto>> GetUser(string username)
         {
-            var user = await userRepository.GetUserByNameAsync(username);
+            var user = await userRepository.GetMemberAsync(username);
 
             if (user == null) return NotFound();
 

@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { error } from 'console';
 import { response } from 'express';
 import { retryWhen } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-test-errors',
@@ -12,7 +13,7 @@ import { retryWhen } from 'rxjs';
   styleUrl: './test-errors.component.css'
 })
 export class TestErrorsComponent {
-  baseUrl = 'https://localhost:7093/api/';
+  baseUrl = environment.apiUrl; //==='https://localhost:7093/api/';
   private http = inject(HttpClient);
   validationErrors:  string[] = [];
 

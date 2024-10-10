@@ -21,6 +21,7 @@ namespace API.Entities
         public required string Country { get; set; }
         public List<Photo> Photos { get; set; } = [];
 
+        // function to get the year of birth from the age   
         //public int GetAge()
         //{ 
         //    return DateOfBirth.CalculateAge();
